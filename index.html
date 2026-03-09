@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agro Trgovina | Početna</title>
+  <style>
+    :root{
+      --green:#18833b;
+      --green-dark:#126a2f;
+      --blue:#153b57;
+      --light:#f4f4f4;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#666;
+      --border:#dedede;
+      --shadow:0 8px 20px rgba(0,0,0,.08);
+      --radius:18px;
+      --container:min(1180px, 92vw);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--text);background:#efefef}
+    a{text-decoration:none;color:inherit}
+    .top-contact{background:#fff;padding:10px 0;border-bottom:1px solid #e7e7e7}
+    .top-contact .wrap,.header .wrap,.hero .wrap,.section .wrap,.footer .wrap{width:var(--container);margin:0 auto}
+    .top-contact .row{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;font-size:18px}
+    .contact-item{display:flex;align-items:center;gap:8px;color:#2f2f2f;font-weight:500}
+    .contact-item .icon{color:var(--green);font-size:20px}
+    .social-link{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--green);color:#fff;border-radius:50%;font-weight:700}
+    .header{background:var(--green);position:sticky;top:0;z-index:20;box-shadow:0 5px 16px rgba(0,0,0,.12)}
+    .header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:14px;color:#fff}
+    .home-icon{font-size:32px;line-height:1}
+    .brand-name{font-size:40px;font-weight:700;letter-spacing:.5px}
+    .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .nav a{color:#fff;padding:14px 22px;border:2px solid rgba(255,255,255,.35);border-radius:12px;font-size:19px;font-weight:700}
+    .nav a.active,.nav a:hover{background:#fff;color:var(--green)}
+    .hero{background:linear-gradient(rgba(16,31,43,.68), rgba(16,31,43,.68)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;color:#fff;padding:72px 0 54px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+    .hero-card{background:rgba(255,255,255,.1);backdrop-filter:blur(4px);padding:28px;border-radius:24px;border:1px solid rgba(255,255,255,.18)}
+    .hero h1{font-size:clamp(34px, 5vw, 62px);line-height:1.04;margin:0 0 16px}
+    .hero p{font-size:20px;line-height:1.55;color:#ebf2f6;margin:0 0 22px;max-width:62ch}
+    .search-box{display:flex;gap:12px;flex-wrap:wrap}
+    .search-box input{flex:1;min-width:240px;padding:18px 18px;border:none;border-radius:14px;font-size:19px}
+    .search-box button{padding:18px 26px;border:none;background:var(--green);color:#fff;border-radius:14px;font-size:19px;font-weight:700;cursor:pointer}
+    .hero-info{background:#fff;color:var(--text);padding:28px;border-radius:24px;box-shadow:var(--shadow)}
+    .hero-info h2{margin:0 0 12px;font-size:32px;color:var(--blue)}
+    .hero-info ul{margin:0;padding-left:20px;font-size:19px;line-height:1.8}
+    .section{padding:46px 0}
+    .section-title{font-size:clamp(30px,4vw,52px);line-height:1.08;margin:0 0 28px;color:var(--blue);letter-spacing:.4px}
+    .category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+    .category-card{background:var(--green);color:#fff;border-radius:18px;padding:34px 26px;box-shadow:var(--shadow);text-align:center;display:flex;align-items:center;justify-content:center;min-height:130px;font-size:clamp(26px,3vw,38px);font-weight:700;transition:.2s transform,.2s background}
+    .category-card:hover{transform:translateY(-3px);background:var(--green-dark)}
+    .products-wrap{position:relative}
+    .slider-shell{overflow:hidden}
+    .slider-track{display:flex;gap:18px;transition:transform .35s ease}
+    .product-card{min-width:calc(33.333% - 12px);background:#fff;border-radius:20px;padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
+    .product-card img{width:100%;height:240px;object-fit:contain;background:#fafafa;border-radius:14px}
+    .product-card h3{font-size:28px;line-height:1.2;margin:18px 0 10px;text-align:center}
+    .product-card p{margin:0 0 16px;color:var(--muted);font-size:18px;line-height:1.5;text-align:center;min-height:54px}
+    .btn{display:inline-block;background:var(--green);color:#fff;padding:16px 26px;border-radius:12px;font-size:22px;font-weight:700}
+    .product-card .btn-wrap{text-align:center}
+    .slider-nav{display:flex;gap:12px;margin-top:20px}
+    .slider-nav button{width:58px;height:58px;border:2px solid #2d2d2d;background:#fff;font-size:30px;cursor:pointer}
+    .footer{background:linear-gradient(rgba(21,59,87,.94),rgba(21,59,87,.94)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;color:#fff;padding:54px 0 26px;margin-top:20px}
+    .footer-grid{display:grid;grid-template-columns:1.3fr .8fr .9fr;gap:26px}
+    .footer h3{font-size:28px;margin:0 0 18px}
+    .footer p,.footer li,.footer a{font-size:18px;line-height:1.7;color:#ecf2f5}
+    .footer ul{list-style:none;padding:0;margin:0}
+    .copyright{margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-size:16px;color:#d6e2ea}
+    .floating-call{position:fixed;right:16px;bottom:16px;width:76px;height:76px;border-radius:22px;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:38px;box-shadow:0 12px 24px rgba(0,0,0,.22);z-index:40}
+    .hint{font-size:16px;color:#dce6eb;margin-top:14px}
+    @media (max-width:980px){
+      .hero-grid,.footer-grid{grid-template-columns:1fr}
+      .product-card{min-width:calc(50% - 9px)}
+      .brand-name{font-size:30px}
+    }
+    @media (max-width:720px){
+      .top-contact .row{justify-content:flex-start}
+      .header .wrap{padding:14px 0;align-items:flex-start;flex-direction:column}
+      .nav{width:100%}
+      .nav a{flex:1;text-align:center;padding:14px 12px;font-size:18px}
+      .category-grid{grid-template-columns:1fr}
+      .product-card{min-width:100%}
+      .hero{padding:42px 0}
+      .section{padding:34px 0}
+      .brand-name{font-size:28px}
+      .floating-call{width:72px;height:72px;font-size:34px}
+    }
+  </style>
+</head>
+<body>
+  <div class="top-contact">
+    <div class="wrap">
+      <div class="row">
+        <a class="contact-item" href="tel:+38160111222"><span class="icon">📞</span><span>+381 60 111 222</span></a>
+        <a class="contact-item" href="mailto:info@agrotrgovina.rs"><span class="icon">✉</span><span>info@agrotrgovina.rs</span></a>
+        <a class="social-link" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="wrap">
+      <a href="index.html" class="brand">
+        <span class="home-icon">⌂</span>
+        <span class="brand-name">Meni</span>
+      </a>
+      <nav class="nav">
+        <a class="active" href="index.html">Glavna</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-card">
+        <h1>Poljoprivredne mašine i delovi na jednom mestu</h1>
+        <p>Jednostavan i pregledan sajt namenjen ljudima koji žele brzo da pronađu mašinu ili odgovarajući deo, bez komplikovanog snalaženja.</p>
+        <div class="search-box">
+          <input id="searchInput" type="text" placeholder="Pretraga svih proizvoda po imenu..." />
+          <button onclick="searchProducts()">Pretraži</button>
+        </div>
+        <div class="hint">Primeri: plug, podrivač, nož za plug, disk, ležaj</div>
+      </div>
+      <div class="hero-info">
+        <h2>Brz pristup</h2>
+        <ul>
+          <li>Velika dugmad i jasan raspored</li>
+          <li>Odvojene mašine i delovi</li>
+          <li>Popularni proizvodi odmah na početnoj</li>
+          <li>Kontakt forma i brzo pozivanje</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title">Glavna podela proizvoda</h2>
+      <div class="category-grid">
+        <a class="category-card" href="masine.html">Poljoprivredne mašine</a>
+        <a class="category-card" href="delovi.html">Delovi za poljoprivredne mašine</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px">
+    <div class="wrap products-wrap">
+      <h2 class="section-title">Najpopularniji proizvodi</h2>
+      <div class="slider-shell">
+        <div class="slider-track" id="sliderTrack">
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0f3b2d?auto=format&fit=crop&w=900&q=80" alt="Plug" />
+            <h3>Reverzibilni plug</h3>
+            <p>Praktična i tražena mašina za različite tipove zemljišta.</p>
+            <div class="btn-wrap"><a class="btn" href="masine-kategorija.html?kategorija=plugovi">Više</a></div>
+          </article>
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&w=900&q=80" alt="Podrivač" />
+            <h3>Podrivač</h3>
+            <p>Jednostavan pregled modela i proizvođača u nekoliko klikova.</p>
+            <div class="btn-wrap"><a class="btn" href="masine-kategorija.html?kategorija=podrivaci">Više</a></div>
+          </article>
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80" alt="Delovi za plug" />
+            <h3>Delovi za plug</h3>
+            <p>Brz put: vrsta mašine → deo → proizvođač.</p>
+            <div class="btn-wrap"><a class="btn" href="delovi-pregled.html?masina=plug">Više</a></div>
+          </article>
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=900&q=80" alt="Setvospremač" />
+            <h3>Setvospremač</h3>
+            <p>Pregledna prezentacija najvažnijih mašina za obradu zemljišta.</p>
+            <div class="btn-wrap"><a class="btn" href="masine-kategorija.html?kategorija=setvospremaci">Više</a></div>
+          </article>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button type="button" onclick="slidePrev()">‹</button>
+        <button type="button" onclick="slideNext()">›</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h3>Agro Trgovina</h3>
+          <p>Prodaja poljoprivrednih mašina i delova. Stranica je napravljena tako da bude laka za korišćenje, pregledna i prilagođena telefonu.</p>
+        </div>
+        <div>
+          <h3>Brzi linkovi</h3>
+          <ul>
+            <li><a href="index.html">Glavna</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="masine.html">Poljoprivredne mašine</a></li>
+            <li><a href="delovi.html">Delovi za mašine</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Kontakt</h3>
+          <p>Telefon: +381 60 111 222</p>
+          <p>Mejl: info@agrotrgovina.rs</p>
+          <p>Facebook: Agro Trgovina</p>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Agro Trgovina. Sva prava zadržana.</div>
+    </div>
+  </footer>
+
+  <a class="floating-call" href="tel:+38160111222" aria-label="Pozovi odmah">📞</a>
+
+  <script>
+    const sliderTrack = document.getElementById('sliderTrack');
+    let sliderIndex = 0;
+    function visibleCards(){ return window.innerWidth <= 720 ? 1 : (window.innerWidth <= 980 ? 2 : 3); }
+    function updateSlider(){
+      const cards = sliderTrack.children.length;
+      const maxIndex = Math.max(0, cards - visibleCards());
+      if(sliderIndex > maxIndex) sliderIndex = maxIndex;
+      const cardWidth = sliderTrack.children[0].getBoundingClientRect().width + 18;
+      sliderTrack.style.transform = `translateX(-${sliderIndex * cardWidth}px)`;
+    }
+    function slideNext(){ sliderIndex++; updateSlider(); }
+    function slidePrev(){ sliderIndex = Math.max(0, sliderIndex - 1); updateSlider(); }
+    window.addEventListener('resize', updateSlider);
+    window.addEventListener('load', updateSlider);
+
+    function searchProducts(){
+      const q = document.getElementById('searchInput').value.trim();
+      if(!q){ alert('Unesite naziv proizvoda za pretragu.'); return; }
+      window.location.href = `pretraga.html?q=${encodeURIComponent(q)}`;
+    }
+    document.getElementById('searchInput').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') searchProducts();
+    });
+  </script>
+</body>
+</html>

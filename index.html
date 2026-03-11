@@ -470,7 +470,7 @@
 
 .category-btn-yellow {
   background: #17843c;
-  color: #fff;
+  color: #4a4a4a;
 }
 
 .category-btn-green {
@@ -1337,28 +1337,7 @@
 const featuredPrev = document.getElementById('featuredPrev');
 const featuredNext = document.getElementById('featuredNext');
 
-if (window.innerWidth <= 900 && featuredProducts && featuredPrev && featuredNext) {
-  const cards = Array.from(featuredProducts.querySelectorAll('.product-card'));
-  let activeIndex = 0;
 
-  function renderMobileSlider() {
-    cards.forEach((card, index) => {
-      card.style.display = index === activeIndex ? 'block' : 'none';
-    });
-  }
-
-  featuredPrev.addEventListener('click', function () {
-    activeIndex = (activeIndex - 1 + cards.length) % cards.length;
-    renderMobileSlider();
-  });
-
-  featuredNext.addEventListener('click', function () {
-    activeIndex = (activeIndex + 1) % cards.length;
-    renderMobileSlider();
-  });
-
-  renderMobileSlider();
-}
 
 
 
@@ -1372,7 +1351,7 @@ if (featuredProducts && featuredPrev && featuredNext) {
   let autoSlide;
 
   function isMobileSlider() {
-    return window.innerWidth <= 900;
+    return true;
   }
 
   function renderMobileSlider() {
@@ -1438,5 +1417,3 @@ if (featuredProducts && featuredPrev && featuredNext) {
   </script>
 </body>
 </html>
-
-

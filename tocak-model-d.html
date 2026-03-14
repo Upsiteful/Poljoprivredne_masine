@@ -3,28 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt | Plugeks</title>
+  <title>Točak model A | Plugeks</title>
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #efefef;
       color: #333;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
-    a {
-      color: inherit;
-    }
-
-    /* =========================
-       TOP BAR
-    ========================= */
     .topbar {
       background: #f3f3f3;
       border-bottom: 1px solid #e2e2e2;
@@ -78,9 +71,7 @@
       line-height: 1;
     }
 
-    .lang-item {
-      padding: 0 10px;
-    }
+    .lang-item { padding: 0 10px; }
 
     .flag {
       width: 28px;
@@ -89,9 +80,6 @@
       display: block;
     }
 
-    /* =========================
-       HERO / LOGO
-    ========================= */
     .hero {
       position: relative;
       min-height: 360px;
@@ -177,9 +165,6 @@
       margin: 0 auto;
     }
 
-    /* =========================
-       NAVIGATION
-    ========================= */
     .nav-desktop {
       position: relative;
       z-index: 5;
@@ -200,216 +185,217 @@
       justify-content: center;
     }
 
-    .nav-desktop a.active {
-      background: #174f7e;
-    }
+    .nav-desktop a.active { background: #174f7e; }
 
     .mobile-header,
     .mobile-nav,
     .mobile-menu-toggle,
-    .mobile-menu-panel {
-      display: none;
+    .mobile-menu-panel { display: none; }
+
+    .page-banner {
+      height: 160px;
+      background:
+        linear-gradient(rgba(24, 36, 67, 0.74), rgba(24, 36, 67, 0.74)),
+        url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;
     }
 
-    /* =========================
-       CONTACT PAGE
-    ========================= */
-    .contact-page {
+    .product-page {
       background: #efefef;
+      padding: 42px 0 60px;
     }
 
-    .contact-hero {
-      position: relative;
-      height: 170px;
-      background: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;
-    }
-
-    .contact-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(22, 47, 73, 0.72);
-    }
-
-    .contact-container {
+    .product-container {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 34px 24px 60px;
+      padding: 0 24px;
     }
 
-    .contact-page-title {
-      margin: 0 0 34px;
-      text-align: center;
-      font-size: 58px;
-      line-height: 1.1;
-      font-weight: 300;
-      color: #3d3d3d;
-    }
-
-    .contact-details-section {
-      margin-bottom: 52px;
-    }
-
-    .contact-details-heading-wrap {
-      background: #16384e;
-      text-align: center;
-      padding: 14px 20px;
-    }
-
-    .contact-details-heading {
-      margin: 0;
-      color: #fff;
-      font-size: 34px;
-      line-height: 1.15;
-      font-weight: 300;
-    }
-
-   .contact-details-card {
-  position: relative;
-  background:
-    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
-    url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1600&q=80') center center / cover no-repeat;
-  border: 1px solid #dddddd;
-  padding: 96px 40px 54px;
-  margin-top: 34px;
-  text-align: center;
-}
-
-.contact-details-icon-wrap {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 104px;
-  height: 104px;
-  background: #16384e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-    .contact-details-icon {
-      font-size: 48px;
-      line-height: 1;
-      color: #fff;
-    }
-
-    .contact-details-content h3 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      font-weight: 400;
-      color: #222;
-    }
-
-    .contact-details-content p {
-      margin: 0 0 8px;
-      font-size: 20px;
-      line-height: 1.45;
-      color: #333;
-    }
-
-    .contact-details-links {
-      margin-top: 18px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .contact-details-links a {
-      color: #2d6df6;
-      text-decoration: none;
-      font-size: 19px;
-    }
-
-    .bank-data {
-      margin-top: 36px;
-    }
-
-    .bank-title {
-      margin-top: 20px !important;
-      font-size: 21px !important;
-      font-weight: 400;
-    }
-
-    .international {
-      margin-top: 28px !important;
-    }
-
-    .contact-layout {
+    .product-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      grid-template-columns: 275px 1fr;
+      gap: 48px;
       align-items: start;
     }
 
-    .contact-map-wrap {
-      height: 540px;
-      border: 1px solid #d8d8d8;
+    .categories-box {
       background: #fff;
-      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     }
 
-    .contact-map-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
+    .categories-head {
+      background: #17843c;
+      color: #fff;
+      padding: 18px 22px;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .categories-body { padding: 18px 22px 16px; }
+
+    .categories-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .categories-list li { margin-bottom: 10px; }
+
+    .categories-list a {
       display: block;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #2f2f2f;
     }
 
-    .contact-form {
+    .categories-list a.current {
+      color: #17843c;
+      font-weight: 700;
+    }
+
+    .breadcrumb {
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: #6a6a6a;
+    }
+
+    .product-title {
+      margin: 0 0 14px;
+      font-size: 58px;
+      line-height: 1.05;
+      font-weight: 300;
+      color: #303030;
+    }
+
+    .product-description {
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.55;
+      color: #4b4b4b;
+      max-width: 980px;
+    }
+
+    .product-divider {
+      height: 1px;
+      background: #d8d8d8;
+      margin: 18px 0 28px;
+    }
+
+    .product-focus {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .product-gallery {
+      background: #f7f7f7;
+      padding: 24px;
+    }
+
+    .product-main-image {
+      min-height: 420px;
       display: flex;
-      flex-direction: column;
-      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      border: 1px solid #cfcfcf;
-      background: #f8f8f8;
-      color: #555;
-      font-size: 20px;
-      padding: 18px 18px;
-      outline: none;
-      border-radius: 2px;
-      font-family: Arial, Helvetica, sans-serif;
+    .product-main-image img {
+      max-width: 92%;
+      max-height: 400px;
+      object-fit: contain;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: #8ab4f8;
-      box-shadow: 0 0 0 2px rgba(138,180,248,0.15);
+    .product-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .product-thumb {
       background: #fff;
+      border: 1px solid #dddddd;
+      padding: 8px;
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .contact-form textarea {
-      min-height: 260px;
-      resize: vertical;
+    .product-thumb img {
+      max-width: 100%;
+      max-height: 92px;
+      object-fit: contain;
     }
 
-    .contact-form button {
-      width: 180px;
+    .product-info-box {
+      background: #f7f7f7;
+      padding: 28px 26px 30px;
+    }
+
+    .product-info-title {
+      margin: 0 0 16px;
+      font-size: 28px;
+      font-weight: 400;
+      color: #2f2f2f;
+      text-transform: uppercase;
+    }
+
+    .product-info-text {
+      margin: 0 0 22px;
+      font-size: 18px;
+      line-height: 1.55;
+      color: #4a4a4a;
+    }
+
+    .product-specs {
+      margin: 0 0 26px;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid #dedede;
+    }
+
+    .product-specs li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid #dedede;
+      font-size: 17px;
+      line-height: 1.4;
+      color: #3f3f3f;
+    }
+
+    .product-specs strong { font-weight: 700; }
+
+    .product-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .product-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
       height: 54px;
-      border: none;
       background: #17843c;
       color: #fff;
       font-size: 21px;
-      cursor: pointer;
+      font-weight: 300;
+      padding: 0 22px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    .product-btn.secondary { background: #174f7e; }
+
     .site-footer {
       position: relative;
       background: #efefef;
       overflow: hidden;
     }
 
-    .footer-top-line {
-      height: 22px;
-      background: #17843c;
-    }
+    .footer-top-line { height: 22px; background: #17843c; }
 
     .footer-main {
       position: relative;
@@ -449,9 +435,7 @@
       z-index: 1;
     }
 
-    .footer-bg-mobile {
-      display: none;
-    }
+    .footer-bg-mobile { display: none; }
 
     .footer-inner {
       position: relative;
@@ -466,9 +450,7 @@
       align-items: start;
     }
 
-    .footer-col {
-      color: #4e4e4e;
-    }
+    .footer-col { color: #4e4e4e; }
 
     .footer-title {
       margin: 0;
@@ -540,9 +522,7 @@
       line-height: 1.45;
     }
 
-    .footer-contact-text div + div {
-      margin-top: 18px;
-    }
+    .footer-contact-text div + div { margin-top: 18px; }
 
     .footer-icon {
       min-width: 28px;
@@ -590,9 +570,7 @@
       line-height: 1.3;
     }
 
-    .footer-made {
-      text-align: right;
-    }
+    .footer-made { text-align: right; }
 
     .footer-made strong {
       font-weight: 800;
@@ -600,36 +578,16 @@
       color: #444;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
-    @media (max-width: 1100px) {
-      .contact-page-title {
-        font-size: 46px;
-      }
-
-      .contact-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-map-wrap {
-        height: 460px;
-      }
-
+    @media (max-width: 1200px) {
+      .product-focus { grid-template-columns: 1fr; }
+      .product-title { font-size: 48px; }
       .footer-inner {
         grid-template-columns: 1fr 1fr;
         gap: 42px 34px;
         justify-content: stretch;
       }
-
-      .footer-bg-right {
-        width: 48%;
-      }
-
-      .footer-bg-fade {
-        right: 48%;
-        width: 16%;
-      }
+      .footer-bg-right { width: 48%; }
+      .footer-bg-fade { right: 48%; width: 16%; }
     }
 
     @media (max-width: 900px) {
@@ -661,9 +619,7 @@
         font-size: 22px;
       }
 
-      .contact-item.email {
-        width: 100%;
-      }
+      .contact-item.email { width: 100%; }
 
       .hero {
         min-height: auto;
@@ -671,13 +627,9 @@
       }
 
       .hero::before,
-      .nav-desktop {
-        display: none;
-      }
+      .nav-desktop { display: none; }
 
-      .hero-center {
-        padding: 0;
-      }
+      .hero-center { padding: 0; }
 
       .mobile-header {
         display: block;
@@ -686,9 +638,7 @@
         box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       }
 
-      .logo-wrap {
-        margin-top: 0;
-      }
+      .logo-wrap { margin-top: 0; }
 
       .logo-block {
         width: 100%;
@@ -701,21 +651,10 @@
         height: 5px;
       }
 
-      .crown {
-        font-size: 62px;
-      }
-
-      .brand {
-        font-size: 78px;
-      }
-
-      .tagline {
-        font-size: 29px;
-      }
-
-      .logo-bottom-line {
-        width: 365px;
-      }
+      .crown { font-size: 62px; }
+      .brand { font-size: 78px; }
+      .tagline { font-size: 29px; }
+      .logo-bottom-line { width: 365px; }
 
       .mobile-nav {
         display: flex;
@@ -773,9 +712,7 @@
         padding: 8px 0 14px;
       }
 
-      .mobile-menu-panel.open {
-        display: block;
-      }
+      .mobile-menu-panel.open { display: block; }
 
       .mobile-menu-panel a {
         display: block;
@@ -785,105 +722,72 @@
         font-size: 21px;
       }
 
-      .mobile-menu-panel a.active {
-        background: #174f7e;
+      .mobile-menu-panel a.active { background: #174f7e; }
+
+      .page-banner { height: 92px; }
+
+      .product-page { padding: 18px 0 42px; }
+
+      .product-container { padding: 0 16px; }
+
+      .product-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      .contact-hero {
-        height: 120px;
-      }
+      .categories-sidebar { display: none; }
 
-      .contact-container {
-        padding: 26px 20px 46px;
-      }
-
-      .contact-page-title {
+      .product-title {
         font-size: 34px;
-        margin-bottom: 26px;
+        line-height: 1.1;
       }
 
-      .contact-details-heading {
-        font-size: 28px;
+      .product-description {
+        font-size: 16px;
+        line-height: 1.45;
       }
 
-      .contact-details-card {
-  padding: 74px 20px 36px;
-  margin-top: 22px;
-}
+      .product-divider { margin: 14px 0 18px; }
 
-.contact-details-icon-wrap {
-  width: 88px;
-  height: 88px;
-  top: -44px;
-}
+      .product-gallery { padding: 18px 12px; }
 
-      .contact-details-icon {
-        font-size: 40px;
+      .product-main-image { min-height: 260px; }
+
+      .product-main-image img { max-height: 250px; }
+
+      .product-thumbs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
       }
 
-      .contact-details-content h3 {
-        font-size: 25px;
-      }
+      .product-thumb { min-height: 88px; }
 
-      .contact-details-content p {
-        font-size: 18px;
-      }
+      .product-thumb img { max-height: 68px; }
 
-      .contact-details-links {
+      .product-info-box { padding: 22px 16px 24px; }
+
+      .product-info-title { font-size: 24px; }
+
+      .product-info-text { font-size: 16px; }
+
+      .product-specs li {
+        font-size: 15px;
         flex-direction: column;
-        gap: 10px;
+        gap: 4px;
       }
 
-      .contact-details-links a {
-        font-size: 18px;
-      }
+      .product-actions { flex-direction: column; }
 
-      .bank-title {
-        font-size: 19px !important;
-      }
-
-      .contact-layout {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .contact-form-col {
-        order: 1;
-      }
-
-      .contact-map-col {
-        order: 2;
-      }
-
-      .contact-form input,
-      .contact-form textarea {
-        font-size: 18px;
-      }
-
-      .contact-form textarea {
-        min-height: 220px;
-      }
-
-      .contact-form button {
+      .product-btn {
         width: 100%;
+        min-width: 0;
+        font-size: 22px;
       }
 
-      .contact-map-wrap {
-        height: 360px;
-      }
-
-      .footer-top-line {
-        height: 0;
-      }
-
-      .footer-main {
-        padding: 38px 0 0;
-      }
-
+      .footer-top-line { height: 0; }
+      .footer-main { padding: 38px 0 0; }
       .footer-bg-right,
-      .footer-bg-fade {
-        display: none;
-      }
+      .footer-bg-fade { display: none; }
 
       .footer-bg-mobile {
         display: block;
@@ -902,22 +806,10 @@
         padding: 0 24px;
       }
 
-      .footer-col {
-        text-align: center;
-      }
-
-      .footer-about {
-        display: none;
-      }
-
-      .footer-title {
-        font-size: 23px;
-      }
-
-      .footer-title-line {
-        width: 110px;
-        margin: 10px auto 24px;
-      }
+      .footer-col { text-align: center; }
+      .footer-about { display: none; }
+      .footer-title { font-size: 23px; }
+      .footer-title-line { width: 110px; margin: 10px auto 24px; }
 
       .footer-links li {
         padding-left: 0;
@@ -931,9 +823,7 @@
         vertical-align: middle;
       }
 
-      .footer-links a {
-        font-size: 21px;
-      }
+      .footer-links a { font-size: 21px; }
 
       .footer-contact-list {
         align-items: center;
@@ -951,17 +841,10 @@
         min-width: 30px;
       }
 
-      .footer-contact-text div + div {
-        margin-top: 14px;
-      }
+      .footer-contact-text div + div { margin-top: 14px; }
 
-      .footer-social {
-        padding: 8px 0 8px;
-      }
-
-      .footer-social a {
-        font-size: 60px;
-      }
+      .footer-social { padding: 8px 0 8px; }
+      .footer-social a { font-size: 60px; }
 
       .footer-bottom-inner {
         padding: 12px 18px 16px;
@@ -970,9 +853,7 @@
       }
 
       .footer-copy,
-      .footer-made {
-        width: 50%;
-      }
+      .footer-made { width: 50%; }
     }
 
     @media (max-width: 640px) {
@@ -982,30 +863,19 @@
       }
 
       .contact-item,
-      .lang-item {
-        font-size: 26px;
-      }
+      .lang-item { font-size: 26px; }
 
-      .mobile-header {
-        padding: 36px 0 24px;
-      }
+      .mobile-header { padding: 36px 0 24px; }
 
-      .logo-line-top {
-        gap: 14px;
-      }
+      .logo-line-top { gap: 14px; }
 
       .logo-line-top .line {
         width: 90px;
         height: 4px;
       }
 
-      .crown {
-        font-size: 48px;
-      }
-
-      .brand {
-        font-size: 56px;
-      }
+      .crown { font-size: 48px; }
+      .brand { font-size: 56px; }
 
       .tagline {
         font-size: 18px;
@@ -1022,52 +892,21 @@
         padding: 0 22px;
       }
 
-      .mobile-nav-left {
-        font-size: 25px;
+      .mobile-nav-left { font-size: 25px; }
+      .product-title { font-size: 28px; }
+      .product-info-title { font-size: 21px; }
+
+      .product-main-image { min-height: 220px; }
+      .product-main-image img { max-height: 210px; }
+
+      .product-btn {
+        height: 52px;
+        font-size: 20px;
       }
 
-      .contact-page-title {
-        font-size: 28px;
-      }
-
-      .contact-details-heading {
-        font-size: 24px;
-      }
-
-      .contact-details-content h3 {
-        font-size: 22px;
-      }
-
-      .contact-details-content p,
-      .contact-details-links a {
-        font-size: 17px;
-      }
-
-      .contact-form input,
-      .contact-form textarea {
-        font-size: 17px;
-        padding: 16px;
-      }
-
-      .contact-form button {
-        font-size: 19px;
-      }
-
-      .contact-map-wrap {
-        height: 300px;
-      }
-
-      .footer-main {
-        padding-top: 34px;
-      }
-
-      .footer-title {
-        font-size: 21px;
-      }
-
-      .footer-links a {
-        font-size: 18px;
-      }
+      .footer-main { padding-top: 34px; }
+      .footer-title { font-size: 21px; }
+      .footer-links a { font-size: 18px; }
 
       .footer-contact-item {
         font-size: 17px;
@@ -1079,13 +918,8 @@
         min-width: 24px;
       }
 
-      .footer-bottom-inner {
-        font-size: 12px;
-      }
-
-      .footer-social a {
-        font-size: 54px;
-      }
+      .footer-bottom-inner { font-size: 12px; }
+      .footer-social a { font-size: 54px; }
     }
   </style>
 </head>
@@ -1137,11 +971,11 @@
   </section>
 
   <nav class="nav-desktop">
-    <a href="#">POČETNA</a>
+    <a href="index.html">POČETNA</a>
     <a href="#">O NAMA</a>
     <a href="#">NOVOSTI</a>
     <a href="#">USLUGE</a>
-    <a href="#" class="active">KONTAKT</a>
+    <a href="kontakt.html">KONTAKT</a>
   </nav>
 
   <div class="mobile-nav">
@@ -1159,82 +993,91 @@
   </div>
 
   <div class="mobile-menu-panel" id="mobileMenuPanel">
-    <a href="#">Početna</a>
+    <a href="index.html">Početna</a>
     <a href="#">O nama</a>
     <a href="#">Novosti</a>
     <a href="#">Usluge</a>
-    <a href="#" class="active">Kontakt</a>
+    <a href="kontakt.html">Kontakt</a>
   </div>
 
-  <section class="contact-page">
-    <div class="contact-hero">
-      <div class="contact-hero-overlay"></div>
-    </div>
+  <div class="page-banner"></div>
 
-    <div class="contact-container">
-      <h1 class="contact-page-title">Kontakt Plugeks - Poljoprivredna Tehnika</h1>
-
-      <section class="contact-details-section">
-        <div class="contact-details-heading-wrap">
-          <h2 class="contact-details-heading">Kontakt detalji</h2>
-        </div>
-
-        <div class="contact-details-card">
-          <div class="contact-details-icon-wrap">
-            <div class="contact-details-icon">✉</div>
-          </div>
-
-          <div class="contact-details-content">
-            <h3>Plugeks.rs</h3>
-            <p>PLUGEKS poljoprivredna tehnika</p>
-            <p>Brzostek 17</p>
-            <p>97-570 Predbož</p>
-            <p>PIB: 772-126-70-85</p>
-
-            <div class="contact-details-links">
-              <a href="tel:+381601234567">+381 60-123-4567</a>
-              <a href="tel:+381607654321">+381 60-765-4321</a>
-              <a href="mailto:office@plugeks.rs">office@plugeks.rs</a>
-            </div>
-
-            <div class="bank-data">
-              <p class="bank-title">Domaće uplate:</p>
-              <p>Broj računa: 51 8988 0001 0000 0014 3651 0003 - RSD</p>
-
-              <p class="bank-title international">Međunarodne uplate:</p>
-              <p>IBAN: RS00 8988 0001 0000 0014 3651 0005 - EUR</p>
+  <main class="product-page" id="productFocus">
+    <div class="product-container">
+      <div class="product-layout">
+        <aside class="categories-sidebar">
+          <div class="categories-box">
+            <div class="categories-head">Kategorije</div>
+            <div class="categories-body">
+              <ul class="categories-list">
+                <li><a href="delovi-za-plugove-raonici.html">Raonici</a></li>
+                <li><a href="delovi-za-plugove-daske.html">Daske pluga</a></li>
+                <li><a href="delovi-za-plugove-produzeci.html">Produžeci</a></li>
+                <li><a href="delovi-za-plugove-tockovi.html" class="current">Točkovi</a></li>
+                <li><a href="delovi-za-plugove-nosaci.html">Nosači</a></li>
+                <li><a href="delovi-za-plugove-crtala.html">Crtala</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
+        </aside>
 
-      <div class="contact-layout">
-        <div class="contact-map-col">
-          <div class="contact-map-wrap">
-            <iframe
-              src="https://www.google.com/maps?q=Brzostek%2017,%2097-570%20Przedb%C3%B3rz&z=12&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
-            ></iframe>
+        <section class="product-content">
+          <p class="breadcrumb">Početna / Delovi za mašine / Delovi za plugove / Točkovi / Točak model A</p>
+          <h1 class="product-title">Točak model A</h1>
+          <p class="product-description">
+            Točak model A namenjen je stabilnijem radu pluga i preciznijem vođenju mašine tokom obrade zemljišta.
+            Odlikuju ga pouzdana konstrukcija, otpornost na opterećenje i dug vek trajanja.
+          </p>
+          <div class="product-divider"></div>
+
+          <div class="product-focus">
+            <div class="product-gallery">
+              <div class="product-main-image">
+                <img src="https://rolland.pl/userdata/public/gfx/19183.jpg" alt="Točak model A">
+              </div>
+
+              <div class="product-thumbs">
+                <div class="product-thumb">
+                  <img src="https://rolland.pl/userdata/public/gfx/19183.jpg" alt="Točak model A slika 1">
+                </div>
+                <div class="product-thumb">
+                  <img src="https://rolland.pl/userdata/public/gfx/19185.jpg" alt="Točak model A slika 2">
+                </div>
+                <div class="product-thumb">
+                  <img src="https://rolland.pl/userdata/public/gfx/19187.jpg" alt="Točak model A slika 3">
+                </div>
+              </div>
+            </div>
+
+            <div class="product-info-box">
+              <h2 class="product-info-title">Osnovne informacije</h2>
+              <p class="product-info-text">
+                Ovaj model točka predstavlja kvalitetan i pouzdan deo za plug, namenjen korisnicima kojima je potreban
+                stabilan rad, jednostavno podešavanje i dugotrajna upotreba u poljoprivrednoj praksi.
+              </p>
+
+              <ul class="product-specs">
+                <li><strong>Naziv proizvoda</strong><span>Točak model A</span></li>
+                <li><strong>Namena</strong><span>Rezervni deo za plug</span></li>
+                <li><strong>Materijal</strong><span>Čelik i otporna guma</span></li>
+                <li><strong>Primena</strong><span>Vođenje i stabilizacija pluga</span></li>
+                <li><strong>Kompatibilnost</strong><span>Više tipova plugova</span></li>
+                <li><strong>Dostupnost</strong><span>Na upit</span></li>
+              </ul>
+
+              <div class="product-actions">
+                <a href="kontakt.html" class="product-btn">Pošalji upit</a>
+                <a href="delovi-za-plugove-tockovi.html" class="product-btn secondary">Nazad</a>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="contact-form-col">
-          <form class="contact-form">
-            <input type="text" placeholder="Ime i prezime" />
-            <input type="tel" placeholder="Telefon" />
-            <textarea placeholder="Pitanje"></textarea>
-            <button type="submit">Pošalji</button>
-          </form>
-        </div>
+        </section>
       </div>
     </div>
-  </section>
+  </main>
 
   <footer class="site-footer">
     <div class="footer-top-line"></div>
-
     <div class="footer-main">
       <div class="footer-bg-right"></div>
       <div class="footer-bg-fade"></div>
@@ -1246,8 +1089,7 @@
           <div class="footer-title-line"></div>
           <p>
             Bavimo se isporukom delova za poljoprivrednu mehanizaciju.
-            Fokus nam je kvalitet, pouzdanost, inovacija i pristupačna cena
-            naših proizvoda.
+            Fokus nam je kvalitet, pouzdanost, inovacija i pristupačna cena naših proizvoda.
           </p>
         </div>
 
@@ -1267,15 +1109,14 @@
           <h3 class="footer-title">KATEGORIJE</h3>
           <div class="footer-title-line"></div>
           <ul class="footer-links">
-            <li><a href="#">Poljoprivredne mašine</a></li>
-            <li><a href="#">Delovi za poljoprivredne mašine</a></li>
+            <li><a href="masine.html">Poljoprivredne mašine</a></li>
+            <li><a href="delovi-za-masine.html">Delovi za poljoprivredne mašine</a></li>
           </ul>
         </div>
 
         <div class="footer-col footer-contact">
           <h3 class="footer-title">KONTAKT</h3>
           <div class="footer-title-line"></div>
-
           <div class="footer-contact-list">
             <div class="footer-contact-item">
               <span class="footer-icon">⌖</span>
@@ -1284,17 +1125,14 @@
                 <div>97-570 Predbož</div>
               </div>
             </div>
-
             <div class="footer-contact-item">
               <span class="footer-icon">✉</span>
               <div class="footer-contact-text">office@plugeks.rs</div>
             </div>
-
             <div class="footer-contact-item">
               <span class="footer-icon">✆</span>
               <div class="footer-contact-text">+381 60-123-4567</div>
             </div>
-
             <div class="footer-contact-item">
               <span class="footer-icon">✆</span>
               <div class="footer-contact-text">+381 60-765-4321</div>
@@ -1329,16 +1167,22 @@
     function updateLogoVisibility() {
       const desktopLogo = document.querySelector('.desktop-logo-wrap');
       if (!desktopLogo) return;
-
-      if (window.innerWidth <= 900) {
-        desktopLogo.style.display = 'none';
-      } else {
-        desktopLogo.style.display = 'flex';
-      }
+      desktopLogo.style.display = window.innerWidth <= 900 ? 'none' : 'flex';
     }
 
     updateLogoVisibility();
     window.addEventListener('resize', updateLogoVisibility);
+
+    window.addEventListener('load', function () {
+      const section = document.getElementById('productFocus');
+      if (!section) return;
+
+      setTimeout(function () {
+        const offset = window.innerWidth <= 900 ? 78 : 40;
+        const y = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }, 250);
+    });
   </script>
 </body>
 </html>

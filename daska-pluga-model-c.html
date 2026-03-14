@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt | Plugeks</title>
+  <title>Daska pluga model A | Plugeks</title>
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #efefef;
@@ -20,11 +22,9 @@
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
-    /* =========================
-       TOP BAR
-    ========================= */
     .topbar {
       background: #f3f3f3;
       border-bottom: 1px solid #e2e2e2;
@@ -89,9 +89,6 @@
       display: block;
     }
 
-    /* =========================
-       HERO / LOGO
-    ========================= */
     .hero {
       position: relative;
       min-height: 360px;
@@ -177,9 +174,6 @@
       margin: 0 auto;
     }
 
-    /* =========================
-       NAVIGATION
-    ========================= */
     .nav-desktop {
       position: relative;
       z-index: 5;
@@ -211,195 +205,211 @@
       display: none;
     }
 
-    /* =========================
-       CONTACT PAGE
-    ========================= */
-    .contact-page {
+    .page-banner {
+      height: 160px;
+      background:
+        linear-gradient(rgba(24, 36, 67, 0.74), rgba(24, 36, 67, 0.74)),
+        url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;
+    }
+
+    .product-page {
       background: #efefef;
+      padding: 42px 0 60px;
     }
 
-    .contact-hero {
-      position: relative;
-      height: 170px;
-      background: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;
-    }
-
-    .contact-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(22, 47, 73, 0.72);
-    }
-
-    .contact-container {
+    .product-container {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 34px 24px 60px;
+      padding: 0 24px;
     }
 
-    .contact-page-title {
-      margin: 0 0 34px;
-      text-align: center;
-      font-size: 58px;
-      line-height: 1.1;
-      font-weight: 300;
-      color: #3d3d3d;
-    }
-
-    .contact-details-section {
-      margin-bottom: 52px;
-    }
-
-    .contact-details-heading-wrap {
-      background: #16384e;
-      text-align: center;
-      padding: 14px 20px;
-    }
-
-    .contact-details-heading {
-      margin: 0;
-      color: #fff;
-      font-size: 34px;
-      line-height: 1.15;
-      font-weight: 300;
-    }
-
-   .contact-details-card {
-  position: relative;
-  background:
-    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
-    url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1600&q=80') center center / cover no-repeat;
-  border: 1px solid #dddddd;
-  padding: 96px 40px 54px;
-  margin-top: 34px;
-  text-align: center;
-}
-
-.contact-details-icon-wrap {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 104px;
-  height: 104px;
-  background: #16384e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-    .contact-details-icon {
-      font-size: 48px;
-      line-height: 1;
-      color: #fff;
-    }
-
-    .contact-details-content h3 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      font-weight: 400;
-      color: #222;
-    }
-
-    .contact-details-content p {
-      margin: 0 0 8px;
-      font-size: 20px;
-      line-height: 1.45;
-      color: #333;
-    }
-
-    .contact-details-links {
-      margin-top: 18px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .contact-details-links a {
-      color: #2d6df6;
-      text-decoration: none;
-      font-size: 19px;
-    }
-
-    .bank-data {
-      margin-top: 36px;
-    }
-
-    .bank-title {
-      margin-top: 20px !important;
-      font-size: 21px !important;
-      font-weight: 400;
-    }
-
-    .international {
-      margin-top: 28px !important;
-    }
-
-    .contact-layout {
+    .product-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      grid-template-columns: 275px 1fr;
+      gap: 48px;
       align-items: start;
     }
 
-    .contact-map-wrap {
-      height: 540px;
-      border: 1px solid #d8d8d8;
+    .categories-box {
       background: #fff;
-      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     }
 
-    .contact-map-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
+    .categories-head {
+      background: #17843c;
+      color: #fff;
+      padding: 18px 22px;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .categories-body {
+      padding: 18px 22px 16px;
+    }
+
+    .categories-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .categories-list li {
+      margin-bottom: 10px;
+    }
+
+    .categories-list a {
       display: block;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #2f2f2f;
     }
 
-    .contact-form {
+    .categories-list a.current {
+      color: #17843c;
+      font-weight: 700;
+    }
+
+    .breadcrumb {
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: #6a6a6a;
+    }
+
+    .product-title {
+      margin: 0 0 14px;
+      font-size: 58px;
+      line-height: 1.05;
+      font-weight: 300;
+      color: #303030;
+    }
+
+    .product-description {
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.55;
+      color: #4b4b4b;
+      max-width: 980px;
+    }
+
+    .product-divider {
+      height: 1px;
+      background: #d8d8d8;
+      margin: 18px 0 28px;
+    }
+
+    .product-focus {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .product-gallery {
+      background: #f7f7f7;
+      padding: 24px;
+    }
+
+    .product-main-image {
+      min-height: 420px;
       display: flex;
-      flex-direction: column;
-      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      border: 1px solid #cfcfcf;
-      background: #f8f8f8;
-      color: #555;
-      font-size: 20px;
-      padding: 18px 18px;
-      outline: none;
-      border-radius: 2px;
-      font-family: Arial, Helvetica, sans-serif;
+    .product-main-image img {
+      max-width: 92%;
+      max-height: 400px;
+      object-fit: contain;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: #8ab4f8;
-      box-shadow: 0 0 0 2px rgba(138,180,248,0.15);
+    .product-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .product-thumb {
       background: #fff;
+      border: 1px solid #dddddd;
+      padding: 8px;
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .contact-form textarea {
-      min-height: 260px;
-      resize: vertical;
+    .product-thumb img {
+      max-width: 100%;
+      max-height: 92px;
+      object-fit: contain;
     }
 
-    .contact-form button {
-      width: 180px;
+    .product-info-box {
+      background: #f7f7f7;
+      padding: 28px 26px 30px;
+    }
+
+    .product-info-title {
+      margin: 0 0 16px;
+      font-size: 28px;
+      font-weight: 400;
+      color: #2f2f2f;
+      text-transform: uppercase;
+    }
+
+    .product-info-text {
+      margin: 0 0 22px;
+      font-size: 18px;
+      line-height: 1.55;
+      color: #4a4a4a;
+    }
+
+    .product-specs {
+      margin: 0 0 26px;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid #dedede;
+    }
+
+    .product-specs li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid #dedede;
+      font-size: 17px;
+      line-height: 1.4;
+      color: #3f3f3f;
+    }
+
+    .product-specs strong {
+      font-weight: 700;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .product-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
       height: 54px;
-      border: none;
       background: #17843c;
       color: #fff;
       font-size: 21px;
-      cursor: pointer;
+      font-weight: 300;
+      padding: 0 22px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    .product-btn.secondary {
+      background: #174f7e;
+    }
+
     .site-footer {
       position: relative;
       background: #efefef;
@@ -600,20 +610,13 @@
       color: #444;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
-    @media (max-width: 1100px) {
-      .contact-page-title {
-        font-size: 46px;
-      }
-
-      .contact-layout {
+    @media (max-width: 1200px) {
+      .product-focus {
         grid-template-columns: 1fr;
       }
 
-      .contact-map-wrap {
-        height: 460px;
+      .product-title {
+        font-size: 48px;
       }
 
       .footer-inner {
@@ -789,87 +792,92 @@
         background: #174f7e;
       }
 
-      .contact-hero {
-        height: 120px;
+      .page-banner {
+        height: 92px;
       }
 
-      .contact-container {
-        padding: 26px 20px 46px;
+      .product-page {
+        padding: 18px 0 42px;
       }
 
-      .contact-page-title {
+      .product-container {
+        padding: 0 16px;
+      }
+
+      .product-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .categories-sidebar {
+        display: none;
+      }
+
+      .product-title {
         font-size: 34px;
-        margin-bottom: 26px;
+        line-height: 1.1;
       }
 
-      .contact-details-heading {
-        font-size: 28px;
+      .product-description {
+        font-size: 16px;
+        line-height: 1.45;
       }
 
-      .contact-details-card {
-  padding: 74px 20px 36px;
-  margin-top: 22px;
-}
-
-.contact-details-icon-wrap {
-  width: 88px;
-  height: 88px;
-  top: -44px;
-}
-
-      .contact-details-icon {
-        font-size: 40px;
+      .product-divider {
+        margin: 14px 0 18px;
       }
 
-      .contact-details-content h3 {
-        font-size: 25px;
+      .product-gallery {
+        padding: 18px 12px;
       }
 
-      .contact-details-content p {
-        font-size: 18px;
+      .product-main-image {
+        min-height: 260px;
       }
 
-      .contact-details-links {
+      .product-main-image img {
+        max-height: 250px;
+      }
+
+      .product-thumbs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .product-thumb {
+        min-height: 88px;
+      }
+
+      .product-thumb img {
+        max-height: 68px;
+      }
+
+      .product-info-box {
+        padding: 22px 16px 24px;
+      }
+
+      .product-info-title {
+        font-size: 24px;
+      }
+
+      .product-info-text {
+        font-size: 16px;
+      }
+
+      .product-specs li {
+        font-size: 15px;
         flex-direction: column;
-        gap: 10px;
+        gap: 4px;
       }
 
-      .contact-details-links a {
-        font-size: 18px;
-      }
-
-      .bank-title {
-        font-size: 19px !important;
-      }
-
-      .contact-layout {
-        display: flex;
+      .product-actions {
         flex-direction: column;
       }
 
-      .contact-form-col {
-        order: 1;
-      }
-
-      .contact-map-col {
-        order: 2;
-      }
-
-      .contact-form input,
-      .contact-form textarea {
-        font-size: 18px;
-      }
-
-      .contact-form textarea {
-        min-height: 220px;
-      }
-
-      .contact-form button {
+      .product-btn {
         width: 100%;
-      }
-
-      .contact-map-wrap {
-        height: 360px;
+        min-width: 0;
+        font-size: 22px;
       }
 
       .footer-top-line {
@@ -1026,35 +1034,25 @@
         font-size: 25px;
       }
 
-      .contact-page-title {
+      .product-title {
         font-size: 28px;
       }
 
-      .contact-details-heading {
-        font-size: 24px;
+      .product-info-title {
+        font-size: 21px;
       }
 
-      .contact-details-content h3 {
-        font-size: 22px;
+      .product-main-image {
+        min-height: 220px;
       }
 
-      .contact-details-content p,
-      .contact-details-links a {
-        font-size: 17px;
+      .product-main-image img {
+        max-height: 210px;
       }
 
-      .contact-form input,
-      .contact-form textarea {
-        font-size: 17px;
-        padding: 16px;
-      }
-
-      .contact-form button {
-        font-size: 19px;
-      }
-
-      .contact-map-wrap {
-        height: 300px;
+      .product-btn {
+        height: 52px;
+        font-size: 20px;
       }
 
       .footer-main {
@@ -1137,17 +1135,17 @@
   </section>
 
   <nav class="nav-desktop">
-    <a href="#">POČETNA</a>
+    <a href="index.html">POČETNA</a>
     <a href="#">O NAMA</a>
     <a href="#">NOVOSTI</a>
     <a href="#">USLUGE</a>
-    <a href="#" class="active">KONTAKT</a>
+    <a href="kontakt.html">KONTAKT</a>
   </nav>
 
   <div class="mobile-nav">
     <div class="mobile-nav-left">
       <span>⌂</span>
-      <span>Meni</span>
+      <span>Мени</span>
     </div>
     <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otvori meni">
       <span class="hamburger">
@@ -1159,78 +1157,88 @@
   </div>
 
   <div class="mobile-menu-panel" id="mobileMenuPanel">
-    <a href="#">Početna</a>
+    <a href="index.html">Početna</a>
     <a href="#">O nama</a>
     <a href="#">Novosti</a>
     <a href="#">Usluge</a>
-    <a href="#" class="active">Kontakt</a>
+    <a href="kontakt.html">Kontakt</a>
   </div>
 
-  <section class="contact-page">
-    <div class="contact-hero">
-      <div class="contact-hero-overlay"></div>
-    </div>
+  <div class="page-banner"></div>
 
-    <div class="contact-container">
-      <h1 class="contact-page-title">Kontakt Plugeks - Poljoprivredna Tehnika</h1>
-
-      <section class="contact-details-section">
-        <div class="contact-details-heading-wrap">
-          <h2 class="contact-details-heading">Kontakt detalji</h2>
-        </div>
-
-        <div class="contact-details-card">
-          <div class="contact-details-icon-wrap">
-            <div class="contact-details-icon">✉</div>
-          </div>
-
-          <div class="contact-details-content">
-            <h3>Plugeks.rs</h3>
-            <p>PLUGEKS poljoprivredna tehnika</p>
-            <p>Brzostek 17</p>
-            <p>97-570 Predbož</p>
-            <p>PIB: 772-126-70-85</p>
-
-            <div class="contact-details-links">
-              <a href="tel:+381601234567">+381 60-123-4567</a>
-              <a href="tel:+381607654321">+381 60-765-4321</a>
-              <a href="mailto:office@plugeks.rs">office@plugeks.rs</a>
-            </div>
-
-            <div class="bank-data">
-              <p class="bank-title">Domaće uplate:</p>
-              <p>Broj računa: 51 8988 0001 0000 0014 3651 0003 - RSD</p>
-
-              <p class="bank-title international">Međunarodne uplate:</p>
-              <p>IBAN: RS00 8988 0001 0000 0014 3651 0005 - EUR</p>
+  <main class="product-page" id="productFocus">
+    <div class="product-container">
+      <div class="product-layout">
+        <aside class="categories-sidebar">
+          <div class="categories-box">
+            <div class="categories-head">Kategorije</div>
+            <div class="categories-body">
+              <ul class="categories-list">
+                <li><a href="delovi-za-plugove-raonici.html">Raonici</a></li>
+                <li><a href="delovi-za-plugove-daske.html" class="current">Daske pluga</a></li>
+                <li><a href="delovi-za-plugove-produzeci.html">Produžeci</a></li>
+                <li><a href="delovi-za-plugove-tockovi.html">Točkovi</a></li>
+                <li><a href="delovi-za-plugove-nosaci.html">Nosači</a></li>
+                <li><a href="delovi-za-plugove-crtala.html">Crtala</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
+        </aside>
 
-      <div class="contact-layout">
-        <div class="contact-map-col">
-          <div class="contact-map-wrap">
-            <iframe
-              src="https://www.google.com/maps?q=Brzostek%2017,%2097-570%20Przedb%C3%B3rz&z=12&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
-            ></iframe>
+        <section class="product-content">
+          <p class="breadcrumb">Početna / Delovi za mašine / Delovi za plugove / Daske pluga / Daska pluga model C</p>
+          <h1 class="product-title">Daska pluga model C</h1>
+          <p class="product-description">
+            Daska pluga model C namenjena je pouzdanom radu pri prevrtanju i usmeravanju zemljišta tokom obrade.
+            Odlikuje je čvrsta konstrukcija, otpornost na habanje i stabilan rad u različitim uslovima korišćenja.
+          </p>
+          <div class="product-divider"></div>
+
+          <div class="product-focus">
+            <div class="product-gallery">
+              <div class="product-main-image">
+                <img src="https://rolland.pl/userdata/public/gfx/19179.jpg" alt="Daska pluga model C">
+              </div>
+
+              <div class="product-thumbs">
+                <div class="product-thumb">
+                  <img src="https://rolland.pl/userdata/public/gfx/19179.jpg" alt="Daska pluga model A slika 1">
+                </div>
+                <div class="product-thumb">
+                  <img src="https://rolland.pl/userdata/public/gfx/19181.jpg" alt="Daska pluga model A slika 2">
+                </div>
+                <div class="product-thumb">
+                  <img src="https://rolland.pl/userdata/public/gfx/19183.jpg" alt="Daska pluga model A slika 3">
+                </div>
+              </div>
+            </div>
+
+            <div class="product-info-box">
+              <h2 class="product-info-title">Osnovne informacije</h2>
+              <p class="product-info-text">
+                Ovaj model daske pluga predstavlja pouzdan rezervni deo za korisnike kojima je potrebna kvalitetna
+                zamena postojećeg elementa. Pogodan je za dugotrajnu upotrebu i siguran rad na parceli.
+              </p>
+
+              <ul class="product-specs">
+                <li><strong>Naziv proizvoda</strong><span>Daska pluga model C</span></li>
+                <li><strong>Namena</strong><span>Rezervni deo za plug</span></li>
+                <li><strong>Materijal</strong><span>Čelik visoke otpornosti</span></li>
+                <li><strong>Primena</strong><span>Obrada i prevrtanje zemljišta</span></li>
+                <li><strong>Kompatibilnost</strong><span>Više tipova plugova</span></li>
+                <li><strong>Dostupnost</strong><span>Na upit</span></li>
+              </ul>
+
+              <div class="product-actions">
+                <a href="kontakt.html" class="product-btn">Pošalji upit</a>
+                <a href="delovi-za-plugove-daske.html" class="product-btn secondary">Nazad</a>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="contact-form-col">
-          <form class="contact-form">
-            <input type="text" placeholder="Ime i prezime" />
-            <input type="tel" placeholder="Telefon" />
-            <textarea placeholder="Pitanje"></textarea>
-            <button type="submit">Pošalji</button>
-          </form>
-        </div>
+        </section>
       </div>
     </div>
-  </section>
+  </main>
 
   <footer class="site-footer">
     <div class="footer-top-line"></div>
@@ -1246,8 +1254,7 @@
           <div class="footer-title-line"></div>
           <p>
             Bavimo se isporukom delova za poljoprivrednu mehanizaciju.
-            Fokus nam je kvalitet, pouzdanost, inovacija i pristupačna cena
-            naših proizvoda.
+            Fokus nam je kvalitet, pouzdanost, inovacija i pristupačna cena naših proizvoda.
           </p>
         </div>
 
@@ -1267,8 +1274,8 @@
           <h3 class="footer-title">KATEGORIJE</h3>
           <div class="footer-title-line"></div>
           <ul class="footer-links">
-            <li><a href="#">Poljoprivredne mašine</a></li>
-            <li><a href="#">Delovi za poljoprivredne mašine</a></li>
+            <li><a href="masine.html">Poljoprivredne mašine</a></li>
+            <li><a href="delovi-za-masine.html">Delovi za poljoprivredne mašine</a></li>
           </ul>
         </div>
 
@@ -1329,16 +1336,22 @@
     function updateLogoVisibility() {
       const desktopLogo = document.querySelector('.desktop-logo-wrap');
       if (!desktopLogo) return;
-
-      if (window.innerWidth <= 900) {
-        desktopLogo.style.display = 'none';
-      } else {
-        desktopLogo.style.display = 'flex';
-      }
+      desktopLogo.style.display = window.innerWidth <= 900 ? 'none' : 'flex';
     }
 
     updateLogoVisibility();
     window.addEventListener('resize', updateLogoVisibility);
+
+    window.addEventListener('load', function () {
+      const section = document.getElementById('productFocus');
+      if (!section) return;
+
+      setTimeout(function () {
+        const offset = window.innerWidth <= 900 ? 78 : 40;
+        const y = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }, 250);
+    });
   </script>
 </body>
 </html>

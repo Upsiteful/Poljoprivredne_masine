@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raonik model C | Plugeks</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #efefef; color: #333; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .topbar{background:#f3f3f3;border-bottom:1px solid #e2e2e2;color:#444;position:relative;z-index:10}
+    .topbar-inner{max-width:1680px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:46px}
+    .topbar-left{flex:1;text-align:center;font-size:18px;line-height:1.2;padding:0 18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .topbar-right{display:flex;align-items:stretch;flex-shrink:0}
+    .contact-item,.lang-item{min-height:46px;display:flex;align-items:center;justify-content:center;padding:0 18px;border-left:1px solid #e0e0e0;font-size:16px;white-space:nowrap;gap:8px}
+    .contact-icon{color:#2b8a57;font-size:17px;line-height:1}
+    .lang-item{padding:0 10px}
+    .flag{width:28px;height:18px;object-fit:cover;display:block}
+    .hero{position:relative;min-height:360px;background:linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)),url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,.08) 40%,rgba(255,255,255,.02) 100%);pointer-events:none}
+    .hero-center{position:relative;z-index:2;max-width:1680px;margin:0 auto;padding-top:22px;display:flex;flex-direction:column;align-items:center}
+    .logo-wrap{width:100%;display:flex;justify-content:center;margin-top:12px}
+    .logo-block{width:420px;text-align:center;color:#000}
+    .logo-line-top{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:4px}
+    .logo-line-top .line{width:129px;height:4px;background:#17843c}
+    .crown{color:#17843c;font-size:56px;line-height:1;transform:translateY(2px)}
+    .brand{font-size:67px;font-weight:800;letter-spacing:1px;line-height:.95;margin:0}
+    .tagline{margin:8px 0 16px;color:#17843c;font-size:27px;letter-spacing:2px;line-height:1.1}
+    .logo-bottom-line{width:334px;height:15px;background:#17843c;margin:0 auto}
+    .nav-desktop{position:relative;z-index:5;background:#17843c;display:flex;justify-content:center;align-items:center;min-height:51px}
+    .nav-desktop a{color:#fff;text-decoration:none;font-size:18px;padding:15px 56px;display:inline-flex;align-items:center;justify-content:center}
+    .nav-desktop a.active{background:#174f7e}
+    .mobile-header,.mobile-nav,.mobile-menu-toggle,.mobile-menu-panel{display:none}
+    .page-banner{height:160px;background:linear-gradient(rgba(24,36,67,.74),rgba(24,36,67,.74)),url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat}
+    .product-page{background:#efefef;padding:42px 0 60px}
+    .product-container{max-width:1320px;margin:0 auto;padding:0 24px}
+    .product-layout{display:grid;grid-template-columns:275px 1fr;gap:48px;align-items:start}
+    .categories-box{background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+    .categories-head{background:#17843c;color:#fff;padding:18px 22px;font-size:22px;font-weight:400}
+    .categories-body{padding:18px 22px 16px}
+    .categories-list{list-style:none;margin:0;padding:0}
+    .categories-list li{margin-bottom:10px}
+    .categories-list a{display:block;font-size:22px;line-height:1.35;color:#2f2f2f}
+    .categories-list a.current{color:#17843c;font-weight:700}
+    .breadcrumb{margin:0 0 12px;font-size:15px;color:#6a6a6a}
+    .product-title{margin:0 0 14px;font-size:58px;line-height:1.05;font-weight:300;color:#303030}
+    .product-description{margin:0 0 16px;font-size:18px;line-height:1.55;color:#4b4b4b;max-width:980px}
+    .product-divider{height:1px;background:#d8d8d8;margin:18px 0 28px}
+    .product-focus{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start}
+    .product-gallery{background:#f7f7f7;padding:24px}
+    .product-main-image{min-height:420px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+    .product-main-image img{max-width:92%;max-height:400px;object-fit:contain}
+    .product-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .product-thumb{background:#fff;border:1px solid #dddddd;padding:8px;min-height:110px;display:flex;align-items:center;justify-content:center}
+    .product-thumb img{max-width:100%;max-height:92px;object-fit:contain}
+    .product-info-box{background:#f7f7f7;padding:28px 26px 30px}
+    .product-info-title{margin:0 0 16px;font-size:28px;font-weight:400;color:#2f2f2f;text-transform:uppercase}
+    .product-info-text{margin:0 0 22px;font-size:18px;line-height:1.55;color:#4a4a4a}
+    .product-specs{margin:0 0 26px;padding:0;list-style:none;border-top:1px solid #dedede}
+    .product-specs li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #dedede;font-size:17px;line-height:1.4;color:#3f3f3f}
+    .product-specs strong{font-weight:700}
+    .product-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .product-btn{display:inline-flex;align-items:center;justify-content:center;min-width:150px;height:54px;background:#17843c;color:#fff;font-size:21px;font-weight:300;padding:0 22px}
+    .product-btn.secondary{background:#174f7e}
+    .site-footer{position:relative;background:#efefef;overflow:hidden}
+    .footer-top-line{height:22px;background:#17843c}
+    .footer-main{position:relative;background:#efefef;padding:48px 0 0;overflow:hidden}
+    .footer-bg-right{position:absolute;top:0;right:0;width:43%;height:100%;background:linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.72)),url('https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=1600&q=80') right center / cover no-repeat;z-index:0}
+    .footer-bg-fade{position:absolute;top:0;right:43%;width:24%;height:100%;background:linear-gradient(90deg,rgba(239,239,239,1) 0%,rgba(239,239,239,.99) 15%,rgba(239,239,239,.95) 32%,rgba(239,239,239,.82) 50%,rgba(239,239,239,.58) 68%,rgba(239,239,239,.24) 86%,rgba(239,239,239,0) 100%);z-index:1}
+    .footer-bg-mobile{display:none}
+    .footer-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 34px;display:grid;grid-template-columns:290px 230px 230px 260px;column-gap:44px;justify-content:start;align-items:start}
+    .footer-col{color:#4e4e4e}
+    .footer-title{margin:0;text-align:center;font-size:21px;line-height:1.2;font-weight:400;color:#444;text-transform:uppercase}
+    .footer-title-line{width:108px;height:1px;background:#d7d7d7;margin:12px auto 30px}
+    .footer-about p{margin:0 auto;max-width:255px;text-align:center;color:#555;font-size:18px;line-height:1.55}
+    .footer-links{margin:0;padding:0;list-style:none}
+    .footer-links li{position:relative;padding-left:30px;margin-bottom:24px}
+    .footer-links li::before{content:"»";position:absolute;left:0;top:-2px;font-size:30px;line-height:1;color:#555}
+    .footer-links a{text-decoration:none;color:#4f4f4f;font-size:17px;line-height:1.45}
+    .footer-contact-list{display:flex;flex-direction:column;gap:18px}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:14px;color:#4f4f4f;font-size:17px;line-height:1.45}
+    .footer-contact-text div + div{margin-top:18px}
+    .footer-icon{min-width:28px;text-align:center;color:#17843c;font-size:28px;line-height:1;margin-top:1px}
+    .footer-social{position:relative;z-index:2;display:flex;justify-content:center;padding:18px 0 14px}
+    .footer-social a{text-decoration:none;color:#17843c;font-size:78px;line-height:1;font-weight:400;font-family:Arial,Helvetica,sans-serif}
+    .footer-bottom{position:relative;z-index:3;background:#efefef;border-top:1px solid #d8d8d8}
+    .footer-bottom-inner{max-width:1320px;margin:0 auto;padding:14px 34px 18px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#555;font-size:17px;line-height:1.3}
+    .footer-made{text-align:right}
+    .footer-made strong{font-weight:800;letter-spacing:1px;color:#444}
+    @media (max-width:1200px){
+      .product-focus{grid-template-columns:1fr}
+      .product-title{font-size:48px}
+      .footer-inner{grid-template-columns:1fr 1fr;gap:42px 34px;justify-content:stretch}
+      .footer-bg-right{width:48%}
+      .footer-bg-fade{right:48%;width:16%}
+    }
+    @media (max-width:900px){
+      .topbar-inner{display:block;padding:18px 0 14px}
+      .topbar-left{white-space:normal;font-size:22px;line-height:1.35;padding:0 28px}
+      .topbar-right{display:flex;flex-wrap:wrap;justify-content:center;gap:0;padding-top:16px}
+      .contact-item,.lang-item{border-left:none;min-height:auto;padding:4px 10px;font-size:22px}
+      .contact-item.email{width:100%}
+      .hero{min-height:auto;background:#efefef}
+      .hero::before,.nav-desktop{display:none}
+      .hero-center{padding:0}
+      .mobile-header{display:block;background:#fff;padding:42px 0 30px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+      .logo-wrap{margin-top:0}
+      .logo-block{width:100%;max-width:520px;padding:0 24px}
+      .logo-line-top .line{width:120px;height:5px}
+      .crown{font-size:62px}
+      .brand{font-size:78px}
+      .tagline{font-size:29px}
+      .logo-bottom-line{width:365px}
+      .mobile-nav{display:flex;align-items:center;justify-content:space-between;background:#17843c;color:#fff;min-height:83px;padding:0 26px;margin-top:0}
+      .mobile-nav-left{display:flex;align-items:center;gap:14px;font-size:26px}
+      .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:68px;height:56px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.04);cursor:pointer}
+      .hamburger{width:34px;height:22px;position:relative}
+      .hamburger span{position:absolute;left:0;width:100%;height:4px;background:#dcebdd;border-radius:2px}
+      .hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:9px}.hamburger span:nth-child(3){bottom:0}
+      .mobile-menu-panel{display:none;background:#17843c;border-top:1px solid rgba(255,255,255,.12);padding:8px 0 14px}
+      .mobile-menu-panel.open{display:block}
+      .mobile-menu-panel a{display:block;color:#fff;text-decoration:none;padding:14px 26px;font-size:21px}
+      .mobile-menu-panel a.active{background:#174f7e}
+      .page-banner{height:92px}
+      .product-page{padding:18px 0 42px}
+      .product-container{padding:0 16px}
+      .product-layout{grid-template-columns:1fr;gap:20px}
+      .categories-sidebar{display:none}
+      .product-title{font-size:34px;line-height:1.1}
+      .product-description{font-size:16px;line-height:1.45}
+      .product-divider{margin:14px 0 18px}
+      .product-gallery{padding:18px 12px}
+      .product-main-image{min-height:260px}
+      .product-main-image img{max-height:250px}
+      .product-thumbs{grid-template-columns:repeat(3,1fr);gap:8px}
+      .product-thumb{min-height:88px}
+      .product-thumb img{max-height:68px}
+      .product-info-box{padding:22px 16px 24px}
+      .product-info-title{font-size:24px}
+      .product-info-text{font-size:16px}
+      .product-specs li{font-size:15px;flex-direction:column;gap:4px}
+      .product-actions{flex-direction:column}
+      .product-btn{width:100%;min-width:0;font-size:22px}
+      .footer-top-line{height:0}
+      .footer-main{padding:38px 0 0}
+      .footer-bg-right,.footer-bg-fade{display:none}
+      .footer-bg-mobile{display:block;position:absolute;inset:0;background:linear-gradient(rgba(239,239,239,.9),rgba(239,239,239,.9)),url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80') center bottom / cover no-repeat;opacity:.3;z-index:0}
+      .footer-inner{grid-template-columns:1fr;gap:26px;padding:0 24px}
+      .footer-col{text-align:center}
+      .footer-about{display:none}
+      .footer-title{font-size:23px}
+      .footer-title-line{width:110px;margin:10px auto 24px}
+      .footer-links li{padding-left:0;margin-bottom:22px}
+      .footer-links li::before{position:static;display:inline-block;margin-right:12px;vertical-align:middle}
+      .footer-links a{font-size:21px}
+      .footer-contact-list{align-items:center;gap:18px}
+      .footer-contact-item{justify-content:center;font-size:20px;max-width:420px}
+      .footer-icon{font-size:30px;min-width:30px}
+      .footer-contact-text div + div{margin-top:14px}
+      .footer-social{padding:8px 0 8px}
+      .footer-social a{font-size:60px}
+      .footer-bottom-inner{padding:12px 18px 16px;font-size:14px;align-items:flex-start}
+      .footer-copy,.footer-made{width:50%}
+    }
+    @media (max-width:640px){
+      .topbar-left{font-size:24px;padding:0 24px}
+      .contact-item,.lang-item{font-size:26px}
+      .mobile-header{padding:36px 0 24px}
+      .logo-line-top{gap:14px}
+      .logo-line-top .line{width:90px;height:4px}
+      .crown{font-size:48px}
+      .brand{font-size:56px}
+      .tagline{font-size:18px;letter-spacing:1.2px}
+      .logo-bottom-line{width:300px;height:12px}
+      .mobile-nav{min-height:78px;padding:0 22px}
+      .mobile-nav-left{font-size:25px}
+      .product-title{font-size:28px}
+      .product-info-title{font-size:21px}
+      .product-main-image{min-height:220px}
+      .product-main-image img{max-height:210px}
+      .product-btn{height:52px;font-size:20px}
+      .footer-main{padding-top:34px}
+      .footer-title{font-size:21px}
+      .footer-links a{font-size:18px}
+      .footer-contact-item{font-size:17px;gap:12px}
+      .footer-icon{font-size:25px;min-width:24px}
+      .footer-bottom-inner{font-size:12px}
+      .footer-social a{font-size:54px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">Plugeks - Poljoprivredna tehnika, Brzostek 17, 97-570 Predbož</div>
+      <div class="topbar-right">
+        <div class="contact-item"><span class="contact-icon">📞</span><span>+381 60-123-4567</span></div>
+        <div class="contact-item"><span class="contact-icon">📞</span><span>+381 60-765-4321</span></div>
+        <div class="contact-item email"><span class="contact-icon">✉</span><span>office@plugeks.rs</span></div>
+        <div class="lang-item"><img class="flag" alt="srpski" src="https://flagcdn.com/w40/rs.png"></div>
+        <div class="lang-item"><img class="flag" alt="nemački" src="https://flagcdn.com/w40/de.png"></div>
+        <div class="lang-item"><img class="flag" alt="engleski" src="https://flagcdn.com/w40/gb.png"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-center">
+      <div class="mobile-header">
+        <div class="logo-wrap">
+          <div class="logo-block">
+            <div class="logo-line-top">
+              <div class="line"></div>
+              <div class="crown">♛</div>
+              <div class="line"></div>
+            </div>
+            <h1 class="brand">PLUGEKS</h1>
+            <div class="tagline">POLJOPRIVREDNA TEHNIKA</div>
+            <div class="logo-bottom-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-wrap desktop-logo-wrap" style="padding-top: 16px;">
+        <div class="logo-block">
+          <div class="logo-line-top">
+            <div class="line"></div>
+            <div class="crown">♛</div>
+            <div class="line"></div>
+          </div>
+          <h1 class="brand">PLUGEKS</h1>
+          <div class="tagline">POLJOPRIVREDNA TEHNIKA</div>
+          <div class="logo-bottom-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav-desktop">
+    <a href="index.html">POČETNA</a>
+    <a href="#">O NAMA</a>
+    <a href="#">NOVOSTI</a>
+    <a href="#">USLUGE</a>
+    <a href="kontakt.html">KONTAKT</a>
+  </nav>
+
+  <div class="mobile-nav">
+    <div class="mobile-nav-left">
+      <span>⌂</span>
+      <span>Мени</span>
+    </div>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otvori meni">
+      <span class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+
+  <div class="mobile-menu-panel" id="mobileMenuPanel">
+    <a href="index.html">Početna</a>
+    <a href="#">O nama</a>
+    <a href="#">Novosti</a>
+    <a href="#">Usluge</a>
+    <a href="kontakt.html">Kontakt</a>
+  </div>
+
+  <div class="page-banner"></div>
+
+  <main class="product-page" id="productFocus">
+    <div class="product-container">
+      <div class="product-layout">
+        <aside class="categories-sidebar">
+          <div class="categories-box">
+            <div class="categories-head">Kategorije</div>
+            <div class="categories-body">
+              <ul class="categories-list">
+                <li><a href="delovi-za-plugove-raonici.html" class="current">Raonici</a></li>
+                <li><a href="delovi-za-plugove-daske.html">Daske pluga</a></li>
+                <li><a href="delovi-za-plugove-produzeci.html">Produžeci</a></li>
+                <li><a href="delovi-za-plugove-tockovi.html">Točkovi</a></li>
+                <li><a href="delovi-za-plugove-nosaci.html">Nosači</a></li>
+                <li><a href="delovi-za-plugove-crtala.html">Crtala</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <section class="product-content">
+          <p class="breadcrumb">Početna / Delovi za mašine / Delovi za plugove / Raonici / Raonik model E</p>
+          <h1 class="product-title">Raonik model E</h1>
+          <p class="product-description">
+            Raonik model E je namenjen preciznoj i stabilnoj obradi zemljišta. Odlikuje ga čvrsta konstrukcija,
+            otpornost na habanje i pouzdan rad u različitim uslovima upotrebe.
+          </p>
+          <div class="product-divider"></div>
+
+          <div class="product-focus">
+            <div class="product-gallery">
+              <div class="product-main-image">
+                <img src="https://rolland.pl/userdata/public/gfx/19179.jpg" alt="Raonik model E">
+              </div>
+
+              <div class="product-thumbs">
+                <div class="product-thumb"><img src="https://rolland.pl/userdata/public/gfx/19179.jpg" alt=""></div>
+                <div class="product-thumb"><img src="https://rolland.pl/userdata/public/gfx/19177.jpg" alt=""></div>
+                <div class="product-thumb"><img src="https://rolland.pl/userdata/public/gfx/19181.jpg" alt=""></div>
+              </div>
+            </div>
+
+            <div class="product-info-box">
+              <h2 class="product-info-title">Osnovne informacije</h2>
+              <p class="product-info-text">
+                Model E  je pogodan za korisnike kojima je potreban pouzdan rezervni deo za svakodnevnu upotrebu
+                i dugotrajan rad na parceli.
+              </p>
+
+              <ul class="product-specs">
+                <li><strong>Naziv proizvoda</strong><span>Raonik model E</span></li>
+                <li><strong>Namena</strong><span>Rezervni deo za plug</span></li>
+                <li><strong>Materijal</strong><span>Kaljeni čelik</span></li>
+                <li><strong>Primena</strong><span>Obrada zemljišta</span></li>
+                <li><strong>Kompatibilnost</strong><span>Više tipova plugova</span></li>
+                <li><strong>Dostupnost</strong><span>Na upit</span></li>
+              </ul>
+
+              <div class="product-actions">
+                <a href="kontakt.html" class="product-btn">Pošalji upit</a>
+                <a href="delovi-za-plugove-raonici.html" class="product-btn secondary">Nazad</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="footer-top-line"></div><div class="footer-main"><div class="footer-bg-right"></div><div class="footer-bg-fade"></div><div class="footer-bg-mobile"></div><div class="footer-inner"><div class="footer-col footer-about"><h3 class="footer-title">PLUGEKS - POLJOPRIVREDNA TEHNIKA</h3><div class="footer-title-line"></div><p>Bavimo se isporukom delova za poljoprivrednu mehanizaciju. Fokus nam je kvalitet, pouzdanost, inovacija i pristupačna cena naših proizvoda.</p></div><div class="footer-col footer-menu"><h3 class="footer-title">MENI</h3><div class="footer-title-line"></div><ul class="footer-links"><li><a href="#">Povraćaj i reklamacije</a></li><li><a href="#">O nama</a></li><li><a href="#">Novosti</a></li><li><a href="#">Cookie politika</a></li><li><a href="#">Politika privatnosti</a></li></ul></div><div class="footer-col footer-categories"><h3 class="footer-title">KATEGORIJE</h3><div class="footer-title-line"></div><ul class="footer-links"><li><a href="masine.html">Poljoprivredne mašine</a></li><li><a href="delovi-za-masine.html">Delovi za poljoprivredne mašine</a></li></ul></div><div class="footer-col footer-contact"><h3 class="footer-title">KONTAKT</h3><div class="footer-title-line"></div><div class="footer-contact-list"><div class="footer-contact-item"><span class="footer-icon">⌖</span><div class="footer-contact-text"><div>Brzostek 17</div><div>97-570 Predbož</div></div></div><div class="footer-contact-item"><span class="footer-icon">✉</span><div class="footer-contact-text">office@plugeks.rs</div></div><div class="footer-contact-item"><span class="footer-icon">✆</span><div class="footer-contact-text">+381 60-123-4567</div></div><div class="footer-contact-item"><span class="footer-icon">✆</span><div class="footer-contact-text">+381 60-765-4321</div></div></div></div></div><div class="footer-social"><a href="#" aria-label="Facebook">f</a></div></div><div class="footer-bottom"><div class="footer-bottom-inner"><div class="footer-copy">© Plugeks.rs. Sva prava zadržana.</div><div class="footer-made">© Izrada: <strong>D-SIGN</strong></div></div></div></footer>
+
+  <script>
+    const toggle = document.getElementById('mobileMenuToggle');
+    const panel = document.getElementById('mobileMenuPanel');
+    if (toggle && panel) toggle.addEventListener('click', () => panel.classList.toggle('open'));
+    function updateLogoVisibility() {
+      const desktopLogo = document.querySelector('.desktop-logo-wrap');
+      if (!desktopLogo) return;
+      desktopLogo.style.display = window.innerWidth <= 900 ? 'none' : 'flex';
+    }
+    updateLogoVisibility();
+    window.addEventListener('resize', updateLogoVisibility);
+    window.addEventListener('load', function () {
+      const section = document.getElementById('productFocus');
+      if (!section) return;
+      setTimeout(function () {
+        const offset = window.innerWidth <= 900 ? 78 : 40;
+        const y = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }, 250);
+    });
+  </script>
+</body>
+</html>
